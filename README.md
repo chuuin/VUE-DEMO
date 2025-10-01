@@ -20,5 +20,9 @@ npm run build
 npm run lint
 ```
 
+### 參考資料
+- [iT 邦幫忙](https://ithelp.ithome.com.tw/articles/10314891)
+
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
