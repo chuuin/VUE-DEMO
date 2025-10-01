@@ -5,6 +5,12 @@
   <p v-else-if="x === 1">x = 1</p>
   <p v-else-if="x === 2">x = 2</p>
   <p v-else>x != 0</p>
+  <p v-for="user in users1" :key="user">{{ user }}</p>
+  <p v-for="(user, index) in users1" :key="user">{{ index }} {{ user }}</p>
+  <p v-for="(user, index) in users2" :key="user.age">{{ index }} {{ user.name }} {{ user.age }}</p>
+  <div v-for="(user, index) in users1" :key="user">
+    <p v-if="user === 'John'">{{ index }} {{ user }}</p>
+  </div>
 </template>
 
 <script>
@@ -20,6 +26,12 @@ export default {
       message: 'Hello Ian',
       isShow: true,
       x: 1,
+      users1: ['Jake', 'John', 'Mary'],
+      users2: [
+        { name: 'Jake', age: 18 },
+        { name: 'John', age: 20 },
+        { name: 'Mary', age: 16 }
+      ],
     }
   },
 }
