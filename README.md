@@ -28,4 +28,4 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
  
 
-### 進度到 Day6 - 函式
+### 進度到 Day10 - 表單 submit
