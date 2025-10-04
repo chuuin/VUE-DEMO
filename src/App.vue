@@ -63,74 +63,141 @@
   <hr>
   <h3>按鈕可以同時傳入多個 Function</h3>
   {{ myname }} {{ count }}
-  <button @click="myFunction3(), changeName($event)">按一下變成英文名</button>
+  <button @click="myFunction3(), changeName()">按一下變成英文名</button>
+  <hr>
 
-
-
-
-
+  <h2>Day8 - 表單 input</h2>
+  <h3>input :</h3>
   {{ text }}<br />
   <input type="text" v-model="text" />
-  <br />
+  <hr>
+  <h3>input 去除前後空白 (v-model.trim="")</h3>
+  {{ text }} <br />
+  <input type="text" v-model.trim="text" />
   {{ selectValue }}<br />
-  <select v-model="selectValue">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-  </select>
+  <hr>
+  <h3>input 游標退出後才更新</h3>
+  {{ text }} <br />
+  <input type="text" v-model.lazy="text" />
+  <hr>
+  <h3>input 防止顯示的變數被更改</h3>
+  <p v-once>{{ message2 }}</p>
   <br />
+  <input type="text" v-model="message2" />
+  <hr>
+  <h3>input 完全顯示標籤的內容</h3>
+  <p v-pre>{{ text }}</p>
+  <input type="text" v-model="text">
+  <hr>
+
+  <h2>Day9 - 表單常用欄位</h2>
+  <h3>input</h3>
+  {{ text2 }} <br />
+  <input type="text" v-model="text2" />
+  <hr>
+  <h3>textarea(文字區域)</h3>
+  {{ text2 }} <br />
+  <textarea v-model="text2" />
+  <hr>
+  <h3>select(下拉式選單)</h3>
+  <select v-model="selectValue">
+    <option value="">select</option>
+    <option value="audi">Audi</option>
+    <option value="bmw">BMW</option>
+    <option value="benz">Benz</option>
+    <option value="volvo">Volvo</option>
+  </select>
+  <hr>
+  <h3>checkbox 單選(boolean)</h3>
   {{ isCheck }}<br />
   <input type="checkbox" v-model="isCheck" />is check
-  <br />
+  <hr>
+  <h3>checkbox 多選(Array)</h3>
   {{ checkbox }}<br />
-  <input type="checkbox" value="0" v-model="checkbox" />0
-  <input type="checkbox" value="1" v-model="checkbox" />1
-  <input type="checkbox" value="2" v-model="checkbox" />2
-  <input type="checkbox" value="3" v-model="checkbox" />3
-  <br />
+  <input type="checkbox" value="audi" v-model="checkbox" />Audi
+  <input type="checkbox" value="bmw" v-model="checkbox" />BMW
+  <input type="checkbox" value="benz" v-model="checkbox" />Benz
+  <input type="checkbox" value="volvo" v-model="checkbox" />Volvo
+  <hr>
+  <h3>radio 單選(string)</h3>
+  {{ radio }} <br />
+  <input type="radio" value="audi" v-model="radio" />Audi
+  <input type="radio" value="bmw" v-model="radio" />BMW
+  <input type="radio" value="benz" v-model="radio" />Benz
+  <input type="radio" value="volvo" v-model="radio" />Volvo
+  <hr>
+
+  <h2>day10 - 表單 submit</h2>
   <input type="text" v-model="formData.formname" />
   <br />
   <textarea v-model="formData.formtext" />
   <br />
   <select v-model="formData.formvalue">
     <option value="">select</option>
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
+    <option value="dog">Dog</option>
+    <option value="cat">Cat</option>
+    <option value="bird">Bird</option>
+    <option value="fish">Fish</option>
   </select>
   <br />
   <input type="checkbox" v-model="formData.formischeck" />is check
   <br />
-  <input type="checkbox" value="0" v-model="formData.formcheck" />0
-  <input type="checkbox" value="1" v-model="formData.formcheck" />1
-  <input type="checkbox" value="2" v-model="formData.formcheck" />2
-  <input type="checkbox" value="3" v-model="formData.formcheck" />3
+  <input type="checkbox" value="dog" v-model="formData.formcheck" />Dog
+  <input type="checkbox" value="cat" v-model="formData.formcheck" />Cat
+  <input type="checkbox" value="bird" v-model="formData.formcheck" />Bird
+  <input type="checkbox" value="fish" v-model="formData.formcheck" />Fish
   <br />
-  <input type="radio" value="0" v-model="formData.formradio" />0
-  <input type="radio" value="1" v-model="formData.formradio" />1
-  <input type="radio" value="2" v-model="formData.formradio" />2
-  <input type="radio" value="3" v-model="formData.formradio" />3
+  <input type="radio" value="dog" v-model="formData.formradio" />Dog
+  <input type="radio" value="cat" v-model="formData.formradio" />Cat
+  <input type="radio" value="bird" v-model="formData.formradio" />Bird
+  <input type="radio" value="fish" v-model="formData.formradio" />Fish
   <br />
   <button @click="submit">送出</button>
-
+  <hr>
+  {{ formData }}
   <hr />
+
+  <h2>Day11 - computed(另一種宣告 function 的方式)</h2>
+  <!-- methods 與 computed 的差別 -->
+  <!-- computed 不管呼叫多少次，都只會執行一次 -->
+  <!-- computed 可以用在一開始網頁執行時需要的判斷 -->
   <div v-for="computedDatas in checkDatas" :key="computedDatas.id">
     {{ computedDatas.id }} {{ computedDatas.name }}
   </div>
   <hr />
-  <input type="text" v-model="user.name" />
-  <hr />
-  <button @click="addItem">Add item</button>
 
+  <h2>Day12 - watch(監聽)</h2>
+  <h3>基本監聽, 按鈕按下去才會監聽</h3>
+  <button @click="addcount">Add item</button>
+  <hr>
+  <h3>剛開始執行時就會監聽</h3>
+  {{ count3 }}
+  <hr>
+  <h3>監聽物件</h3>
+  <input type="text" v-model="user.name" />
+  <hr>
+  <h3>監聽陣列</h3>
+  <button @click="addItem">Add item</button>
+  <hr>
+
+  <h2>Day13 - component(元件)</h2>
+  <Vue13Day />
+  <hr>
 </template>
 
 <script>
+import Vue13Day from './components/Vue13Day.vue';
+
 //所有程式邏輯都必須要寫在 export default {} 裡頭。
 export default {
   //name: 'App' 宣告這個 .vue 的名稱。
-  name: "testJs",
+  name: "App",
 
-  //data() {} 是宣告變數的地方，在裡面使用 return 來輸出一個變數 message，輸出的意思就是將變數輸出給 <template></template> 可以來使用。而這個變數 message 的型別是一個字串，給予了 'Hello World'。
+  components: {
+    Vue13Day,
+  },
+
+  //   //data() {} 是宣告變數的地方，在裡面使用 return 來輸出一個變數 message，輸出的意思就是將變數輸出給 <template></template> 可以來使用。而這個變數 message 的型別是一個字串，給予了 'Hello World'。
   data() {
     return {
       message: "Hello Ian",
@@ -147,9 +214,12 @@ export default {
       count: 0,
       myname: '邊伯賢',
       text: '',
+      message2: '不能被改了',
+      text2: '',
       selectValue: '',
       isCheck: false,
       checkbox: [],
+      radio: '',
       formData: {
         formname: '',
         formtext: '',
@@ -163,11 +233,14 @@ export default {
         { id: 2, name: 'Allan' },
         { id: 1, name: 'Peter' },
       ],
+      count2: 0,
+      count3: 10,
       user: {
         name: '',
       },
       items: [],
     };
+
   },
 
   methods: {
@@ -184,22 +257,33 @@ export default {
     myFunction4(temp) {
       this.count += temp;
     },
-    changeName(event) {
-      console.log(event.target)
+    changeName() {
+      // console.log(event.target);
       this.myname = 'Baekhyun';
     },
 
     submit() {
       console.log(this.formData)
     },
+
+    addcount() {
+      this.count2 += 1;
+    },
+
     addItem() {
-      this.items.push('test');
+      this.items.push('甲矩橘room');
       console.log(this.items)
     }
   },
   watch: {
-    count(newvalue, oldvalue) {
+    count2(newvalue, oldvalue) {
       console.log(newvalue, oldvalue);
+    },
+    count3: {
+      handler(newvalue) {
+        console.log(newvalue);
+      },
+      immediate: true, //要設定才會起作用，剛開始執行時就會監聽
     },
     user: {
       handler(newValue) {
@@ -213,11 +297,10 @@ export default {
   computed: {
     checkDatas() {
       return this.computedDatas.filter((data) => data.id === 1);
+      // 使用了一個快速篩選的方式 filter，this.datas.filter((data) => data.id === 1) 這個寫法就表示將陣列 datas 的資料一個一個走訪，然後找到 id 等於 1 的回傳成一個陣列出來。
     }
   }
 };
-
-
 </script>
 
 <style>

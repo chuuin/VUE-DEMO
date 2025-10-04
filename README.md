@@ -28,4 +28,5 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
  
 
-### 進度到 Day10 - 表單 submit
+### 進度到 Day13 - components (元件)
+- 試著把所有天數用 components 分開，並用 props
