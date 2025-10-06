@@ -1,11 +1,9 @@
 <template>
-    <h2>Hello Component</h2>
-
-
+    <h2>Vue30 - Day13</h2>
 </template>
 <script>
 export default {
-    name: 'Vue13Day',
+    name: 'Day13Component',
     props: {
         message: String,
     }

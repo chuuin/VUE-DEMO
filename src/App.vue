@@ -181,12 +181,32 @@
   <hr>
 
   <h2>Day13 - component(元件)</h2>
-  <Vue13Day />
+  <Day13 />
   <hr>
+
+  <h2>Day14 - 元件傳入參數</h2>
+  <h3>基本 component</h3>
+  <Day14 />
+  <hr>
+  <h3>傳入參數</h3>
+  <Day14 name="Ian" />
+  <hr>
+  <h3>傳入參數使用變數</h3>
+  <Day14 :name="ComponentName" />
+  <hr>
+  <h3>傳入參數型別不相符</h3>
+  <Day14_2 id="name" name="Ian" />
+  <hr>
+  <h3>傳入參數缺少時</h3>
+  <Day14_2 :id="ComponentName" :name="myname" />
+
+
 </template>
 
 <script>
-import Vue13Day from './components/Vue13Day.vue';
+import Day13 from './components/Day13Compontent.vue';
+import Day14 from './components/Day14Component.vue';
+import Day14_2 from './components/Day14-2Component.vue';
 
 //所有程式邏輯都必須要寫在 export default {} 裡頭。
 export default {
@@ -194,7 +214,9 @@ export default {
   name: "App",
 
   components: {
-    Vue13Day,
+    Day13,
+    Day14,
+    Day14_2,
   },
 
   //   //data() {} 是宣告變數的地方，在裡面使用 return 來輸出一個變數 message，輸出的意思就是將變數輸出給 <template></template> 可以來使用。而這個變數 message 的型別是一個字串，給予了 'Hello World'。
@@ -239,6 +261,7 @@ export default {
         name: '',
       },
       items: [],
+      ComponentName: 'WenLin',
     };
 
   },
